@@ -12,7 +12,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
 
     {{-- Fonts --}}
@@ -26,7 +26,7 @@
   <body>
     <div id="app">
 
-        @include('includes.navbar')
+        @include('inc.navbar')
 
         <main class="py-4">
             @yield('content')
@@ -37,7 +37,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    {{-- <script src="{!! asset('js/app.js') !!}"></script> --}}
+    <script src="{!! asset('js/app.js') !!}"></script>
     <script>
         $(document).ready(function()
         {
