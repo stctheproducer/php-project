@@ -9,13 +9,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'members';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name', 'middle_name', 'last_name', 'birthday', 'residential_address', 'wedding_anniversary', 'home_phone_number', 'office_phone_number', 'cell_phone_number', 'fellowship_group_id', 'discipler_id', 'status_id', 'email', 'password',
+        'first_name', 'middle_name', 'last_name', 'birthday', 'residential_address', 'wedding_anniversary', 'home_phone_number', 'office_phone_number', 'cell_phone_number',
     ];
 
     /**
@@ -25,7 +27,22 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+        'status_id', 'fellowship_group_id',
+        'discipler_id',
     ];
 
-    protected $table = 'members';
+    public function fellowshipGroup()
+    {
+        return $this->belongsTo(FellowshipGroup::class, 'member_id');
+    }
+
+    public function discipler()
+    {
+        return $this->hasOne(User::class, 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'member_id');
+    }
 }

@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'last_name' => 'required|string|max:30',
             'birthday' => 'required|date',
             'email' => 'required|string|email|max:255|unique:members',
-            'residential_address' => 'required|string|max:150',
+            'residential_address' => 'nullable|string|max:150',
             'password' => 'required|string|min:8|confirmed',
         ]);
     }

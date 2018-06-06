@@ -13,11 +13,22 @@ class CreateGroupLeadersTable extends Migration
     public function up()
     {
         Schema::create('group_leaders', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('members');
+            $table->foreign('member_id')
+                ->references('id')
+                ->on('members')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedInteger('fellowship_group_id');
-            $table->foreign('fellowship_group_id')->references('id')->on('felowship_groups');
+            $table->foreign('fellowship_group_id')
+                ->references('id')
+                ->on('felowship_groups')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->primary([
+                'member_id',
+                'fellowship_group_id'
+            ]);
             $table->timestamps();
         });
     }
