@@ -36,25 +36,10 @@ class CreateMembersTable extends Migration
             $table->string('password');
             $table->unsignedInteger('fellowship_group_id')
                 ->nullable($value = true);
-            $table->foreign('fellowship_group_id')
-                ->references('id')
-                ->on('fellowship_groups')
-                ->onDelete('set null');
-                // ->onUpdate('cascade');
             $table->unsignedInteger('discipler_id')
-                ->nullable()
-                ->default(0);
-            $table->foreign('discipler_id')
-                ->references('id')
-                ->on('members')
-                ->onDelete('set null');
+                ->nullable($value = true);
             $table->unsignedInteger('status_id')
-                ->default(1);
-            $table->foreign('status_id')
-                ->references('id')
-                ->on('statuses')
-                ->onDelete('set null');
-                // ->onUpdate('cascade');
+                ->nullable($value = true);
             $table->rememberToken();
             $table->timestamps();
         });

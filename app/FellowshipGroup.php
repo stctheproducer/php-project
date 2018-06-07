@@ -8,6 +8,6 @@ class FellowshipGroup extends Model
 {
     public function members()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Member::class);
     }
 }

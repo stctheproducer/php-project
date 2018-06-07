@@ -16,12 +16,7 @@ class CreateFellowshipGroupsTable extends Migration
             $table->increments('id');
             $table->string('group_name', 30);
             $table->string('location', 50);
-            $table->unsignedInteger('group_leader_id');
-            $table->foreign('group_leader_id')
-                ->references('id')
-                ->on('group_leaders')
-                ->onDelete('set null')
-                ->onUpdate('cascade');
+            $table->unsignedInteger('group_leader_id')->nullable();
             $table->timestamps();
         });
     }

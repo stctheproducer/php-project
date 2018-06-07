@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     public function discipler()
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->hasMany(Member::class, 'id');
     }
 
     public function status()
